@@ -67,7 +67,8 @@ stack_t* stack_create(size_t block_size, uint32_t capacity,
                       stack_malloc_fn malloc_fn, stack_free_fn free_fn
 #ifdef DS_USE_THREAD_SAFETY
                       , DS_LOCK_T *lock
-#endif)
+#endif
+)
 {
     if (block_size == 0 || capacity == 0) return NULL;
 
