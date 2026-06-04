@@ -103,19 +103,18 @@ int main(void) {
     printf("  - Total elements processed: %d\n", MAX_COUNT);
     printf("  - Producer Checksum:       %llu\n", context.expected_sum);
     printf("  - Consumer Checksum:       %llu\n", context.consumer_sum);
-    printf("  - Max Stack Occupancy hit:  %u / %u\n", 
-           stack_get_max_occupancy(my_stack), STACK_CAPACITY);
+    printf("  - Max Stack Occupancy hit:  %u / %u\n", stack_get_max_occupancy(my_stack), STACK_CAPACITY);
     printf("  - Ending Stack Occupancy:   %u\n", stack_occupancy(my_stack));
 
     bool success = true;
     if (context.expected_sum != context.consumer_sum) {
-        printf("\n❌ TEST FAILED: Checksum Mismatch (Data Corruption/Loss detected).\n");
+        printf("TEST FAILED: Checksum Mismatch (Data Corruption/Loss detected).\n");
         success = false;
     } else if (stack_occupancy(my_stack) != 0) {
-        printf("\n❌ TEST FAILED: Elements leaked or left stuck on stack.\n");
+        printf("TEST FAILED: Elements leaked or left stuck on stack.\n");
         success = false;
     } else {
-        printf("\n✅ TEST PASSED: Stack thread-safety verified successfully.\n");
+        printf("TEST PASSED: Stack thread-safety verified successfully.\n");
     }
 
     /* 7. Clean up Resources */

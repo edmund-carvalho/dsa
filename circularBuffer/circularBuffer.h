@@ -26,7 +26,7 @@
  *   static uint8_t buf[64 * 10];
  *   circular_buffer_t *cb = cb_create_static(buf, 64, 10);
  *   cb_push(cb, data);
- *   // no need to destroy – but you can still call cb_destroy (it won't free buf)
+ *   // no need to destroy - but you can still call cb_destroy (it won't free buf)
  * @endcode
  */
 
@@ -145,7 +145,7 @@ circular_buffer_t* cb_create_static(uint8_t *buffer,
  * @brief Destroy a circular buffer and free associated memory.
  *
  * If the buffer was created with cb_create_static(), the user‑provided memory
- * is *not* freed – only the handle itself is released.
+ * is *not* freed - only the handle itself is released.
  *
  * @param cb Handle to destroy (safe to pass NULL).
  */

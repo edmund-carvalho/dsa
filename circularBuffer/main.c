@@ -109,13 +109,13 @@ int main(void) {
 
     bool success = true;
     if (context.expected_sum != context.consumer_sum) {
-        printf("\n❌ TEST FAILED: Checksum Mismatch (Data Corruption/Loss detected).\n");
+        printf("TEST FAILED: Checksum Mismatch (Data Corruption/Loss detected).\n");
         success = false;
     } else if (cb_occupancy(my_cb) != 0) {
-        printf("\n❌ TEST FAILED: Elements leaked or left stuck in circular buffer.\n");
+        printf("TEST FAILED: Elements leaked or left stuck in circular buffer.\n");
         success = false;
     } else {
-        printf("\n✅ TEST PASSED: Circular Buffer thread-safety verified successfully.\n");
+        printf("TEST PASSED: Circular Buffer thread-safety verified successfully.\n");
     }
 
     /* 7. Clean up Resources */

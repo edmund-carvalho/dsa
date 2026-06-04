@@ -7,8 +7,8 @@
  * Data is copied in/out by value using memcpy().
  *
  * Two creation paths are provided:
- *  - cb_create()        – dynamic allocation of both handle and data buffer.
- *  - cb_create_static() – uses a user‑provided data buffer; only the handle
+ *  - cb_create()        - dynamic allocation of both handle and data buffer.
+ *  - cb_create_static() - uses a user‑provided data buffer; only the handle
  *                          is allocated dynamically (with default_malloc).
  *
  * When DS_USE_THREAD_SAFETY is defined, all mutating operations are
@@ -20,7 +20,7 @@
 #include <stdlib.h>
 
 /* ------------------------------------------------------------------ */
-/*  Full struct definition – hidden from users                         */
+/*  Full struct definition - hidden from users                         */
 /* ------------------------------------------------------------------ */
 struct circular_buffer_t {
     uint8_t  *buffer;          /**< Pointer to the underlying data storage.     */
@@ -54,7 +54,7 @@ struct circular_buffer_t {
 /* ------------------------------------------------------------------ */
 
 /**
- * @brief Fallback malloc – wraps the standard library malloc().
+ * @brief Fallback malloc - wraps the standard library malloc().
  */
 static inline void* cb_default_malloc(size_t size)
 {
@@ -62,7 +62,7 @@ static inline void* cb_default_malloc(size_t size)
 }
 
 /**
- * @brief Fallback free – wraps the standard library free().
+ * @brief Fallback free - wraps the standard library free().
  */
 static inline void cb_default_free(void *ptr)
 {
@@ -107,7 +107,7 @@ static void cb_update_watermarks(circular_buffer_t *cb)
 }
 
 /* ------------------------------------------------------------------ */
-/*  Public API – Lifetime                                               */
+/*  Public API - Lifetime                                               */
 /* ------------------------------------------------------------------ */
 
 circular_buffer_t* cb_create(size_t block_size,
@@ -244,7 +244,7 @@ void cb_destroy(circular_buffer_t *cb)
 }
 
 /* ------------------------------------------------------------------ */
-/*  Public API – Core Operations                                       */
+/*  Public API - Core Operations                                       */
 /* ------------------------------------------------------------------ */
 
 bool cb_push(circular_buffer_t *cb, const void *data)
@@ -331,7 +331,7 @@ bool cb_peek(const circular_buffer_t *cb, void *data_out)
 }
 
 /* ------------------------------------------------------------------ */
-/*  Public API – State Queries                                         */
+/*  Public API - State Queries                                         */
 /* ------------------------------------------------------------------ */
 
 uint32_t cb_occupancy(const circular_buffer_t *cb)
@@ -350,7 +350,7 @@ bool cb_is_full(const circular_buffer_t *cb)
 }
 
 /* ------------------------------------------------------------------ */
-/*  Public API – Watermark Configuration                               */
+/*  Public API - Watermark Configuration                               */
 /* ------------------------------------------------------------------ */
 
 void cb_set_high_watermark(circular_buffer_t *cb,
@@ -378,7 +378,7 @@ void cb_set_low_watermark(circular_buffer_t *cb,
 }
 
 /* ------------------------------------------------------------------ */
-/*  Public API – Occupancy Statistics                                  */
+/*  Public API - Occupancy Statistics                                  */
 /* ------------------------------------------------------------------ */
 
 uint32_t cb_get_max_occupancy(const circular_buffer_t *cb)
